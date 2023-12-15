@@ -1,5 +1,5 @@
 import { INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { personOperations, personFields } from './PersonDescription';
+import { personFields, personOperations } from './PersonDescription';
 
 export class Attio implements INodeType {
 	description: INodeTypeDescription = {

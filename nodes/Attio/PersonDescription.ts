@@ -18,23 +18,17 @@ export const personOperations: INodeProperties[] = [
 				name: 'Get',
 				value: 'get',
 				action: 'Get a person',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/v2/objects/people/records',
-					},
-				},
 			},
 		],
 		default: 'get',
 	},
 ];
 
-const personGetOperation: INodeProperties[] = [
+const getOperations: INodeProperties[] = [
 	{
 		displayName: 'Record ID',
 		name: 'recordID',
-		default: 'get',
+		type: 'string',
 		description: 'Input the record ID',
 		displayOptions: {
 			show: {
@@ -42,11 +36,20 @@ const personGetOperation: INodeProperties[] = [
 				operation: ['get'],
 			},
 		},
-		type: 'string',
+		routing: {
+			request: {
+				method: 'GET',
+				url: '=/v2/objects/people/records/{{encodeURIComponent($value)}}',
+			},
+		},
 		required: true,
+		default: '',
 	},
 ];
 
 export const personFields: INodeProperties[] = [
-	...personGetOperation,
+	/* -------------------------------------------------------------------------- */
+	/*                                person:get                              		*/
+	/* -------------------------------------------------------------------------- */
+	...getOperations,
 ]
