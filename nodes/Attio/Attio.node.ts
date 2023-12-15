@@ -29,8 +29,21 @@ export class Attio implements INodeType {
 			},
 		},
 		properties: [
-			
-		]
+			{
+				displayName: 'Resource',
+				name: 'resource',
+				type: 'options',
+				noDataExpression: true,
+				options: [
+					{
+						name: 'User',
+						value: 'user',
+					},
+				],
+				default: 'user'
+			},
 
-	}
+		],
+
+	};
 }
