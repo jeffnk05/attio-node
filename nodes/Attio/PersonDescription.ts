@@ -1,7 +1,7 @@
 import { INodeProperties } from "n8n-workflow";
 
 // When the resource `person` is selected, this `operation` parameter will be shown.
-export const personVerbOperations: INodeProperties[] = [
+export const personOperations: INodeProperties[] = [
 	{
 		displayName: 'Operation',
 		name: 'operation',
@@ -46,3 +46,7 @@ const personGetOperation: INodeProperties[] = [
 		required: true,
 	},
 ];
+
+export const personFields: INodeProperties[] = [
+	...personGetOperation,
+]
