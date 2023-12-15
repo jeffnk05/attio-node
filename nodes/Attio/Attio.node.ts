@@ -36,11 +36,11 @@ export class Attio implements INodeType {
 				noDataExpression: true,
 				options: [
 					{
-						name: 'User',
-						value: 'user',
+						name: 'Person',
+						value: 'person',
 					},
 				],
-				default: 'user'
+				default: 'person'
 			},
 
 		],
