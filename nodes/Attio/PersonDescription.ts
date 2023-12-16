@@ -49,7 +49,7 @@ const getOperations: INodeProperties[] = [
 
 export const personFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
-	/*                                person:get                              		*/
+	/*                                people:get                              		*/
 	/* -------------------------------------------------------------------------- */
 	...getOperations,
 ]
