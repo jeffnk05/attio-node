@@ -19,6 +19,17 @@ export const personOperations: INodeProperties[] = [
 				value: 'get',
 				action: 'Get a person',
 			},
+			{
+				name: 'Create',
+				value: 'create',
+				action: 'Create a person record',
+				routing: {
+					request: {
+						method: 'POST',
+						url: '=/v2/objects/people/records'
+					}
+				}
+			}
 		],
 		default: 'get',
 	},
@@ -46,6 +57,7 @@ const getOperations: INodeProperties[] = [
 		default: '',
 	},
 ];
+
 
 export const personFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
