@@ -58,10 +58,36 @@ const getOperations: INodeProperties[] = [
 	},
 ];
 
+const createOperations: INodeProperties[] = [
+	{
+			displayName: 'Email Adress',
+			name: 'emailAddress',
+			type: 'string',
+			default: '',
+			displayOptions: {
+					show: {
+							resource: ['person'],
+							operation: ['create'],
+					},
+			},
+			routing: {
+					send: {
+							type: 'body',
+							property: 'data.values.email_addresses[0].email_address',
+					},
+			},
+	},
+	// Additional fields for last name, email, etc., following the same pattern
+];
+
 
 export const personFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
 	/*                                people:get                              		*/
 	/* -------------------------------------------------------------------------- */
 	...getOperations,
+	/* -------------------------------------------------------------------------- */
+	/*                                contact:create                              */
+	/* -------------------------------------------------------------------------- */
+	...createOperations,
 ]
