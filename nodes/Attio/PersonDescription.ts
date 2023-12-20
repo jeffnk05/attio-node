@@ -29,6 +29,17 @@ export const personOperations: INodeProperties[] = [
 						url: '=/v2/objects/people/records'
 					}
 				}
+			},
+			{
+				name: 'Update',
+				value: 'update',
+				action: 'Update a person record',
+				routing: {
+					request: {
+						method: 'PATCH',
+						url: '=/v2/objects/people/records'
+					}
+				}
 			}
 		],
 		default: 'get',
@@ -60,7 +71,7 @@ const getOperations: INodeProperties[] = [
 
 const createOperations: INodeProperties[] = [
 	{
-			displayName: 'Email Adress',
+			displayName: 'Email Address',
 			name: 'emailAddress',
 			type: 'string',
 			default: '',
