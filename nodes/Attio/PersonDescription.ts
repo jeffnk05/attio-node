@@ -92,6 +92,25 @@ const createOperations: INodeProperties[] = [
 
 const updateOperations: INodeProperties[] = [
 	{
+		displayName: 'Record ID',
+		name: 'recordID',
+		type: 'string',
+		default: '',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['person'],
+				operation: ['update'],
+			},
+		},
+		routing: {
+			request: {
+				method: 'PATCH',
+				url: '=/v2/objects/people/records/{{encodeURIComponent($value)}}',
+			},
+		},
+	},
+	{
 		displayName: 'Email Address',
 		name: 'emailAddress',
 		type: 'string',
@@ -99,7 +118,7 @@ const updateOperations: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['person'],
-				operation: ['create'],
+				operation: ['update'],
 			},
 		},
 		routing: {
