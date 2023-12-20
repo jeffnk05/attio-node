@@ -162,6 +162,7 @@ const deleteOperations: INodeProperties[] = [
 				],
 			}
 		},
+		// add required
 		default: ''
 	}
 ]

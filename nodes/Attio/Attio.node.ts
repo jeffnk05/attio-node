@@ -40,6 +40,10 @@ export class Attio implements INodeType {
 						name: 'Person',
 						value: 'person',
 					},
+					{
+						name: 'Company',
+						value: 'company'
+					}
 				],
 				default: 'person',
 			},
