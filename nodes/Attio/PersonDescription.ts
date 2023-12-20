@@ -1,4 +1,4 @@
-import { INodeProperties } from "n8n-workflow";
+import { INodeProperties } from 'n8n-workflow';
 
 // When the resource `person` is selected, this `operation` parameter will be shown.
 export const personOperations: INodeProperties[] = [
@@ -26,9 +26,9 @@ export const personOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'POST',
-						url: '=/v2/objects/people/records'
-					}
-				}
+						url: '=/v2/objects/people/records',
+					},
+				},
 			},
 			{
 				name: 'Update',
@@ -37,10 +37,10 @@ export const personOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'PATCH',
-						url: '=/v2/objects/people/records'
-					}
-				}
-			}
+						url: '=/v2/objects/people/records',
+					},
+				},
+			},
 		],
 		default: 'get',
 	},
@@ -71,26 +71,45 @@ const getOperations: INodeProperties[] = [
 
 const createOperations: INodeProperties[] = [
 	{
-			displayName: 'Email Address',
-			name: 'emailAddress',
-			type: 'string',
-			default: '',
-			displayOptions: {
-					show: {
-							resource: ['person'],
-							operation: ['create'],
-					},
+		displayName: 'Email Address',
+		name: 'emailAddress',
+		type: 'string',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['person'],
+				operation: ['create'],
 			},
-			routing: {
-					send: {
-							type: 'body',
-							property: 'data.values.email_addresses[0].email_address',
-					},
+		},
+		routing: {
+			send: {
+				type: 'body',
+				property: 'data.values.email_addresses[0].email_address',
 			},
+		},
 	},
-	// Additional fields for last name, email, etc., following the same pattern
 ];
 
+const updateOperations: INodeProperties[] = [
+	{
+		displayName: 'Email Address',
+		name: 'emailAddress',
+		type: 'string',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['person'],
+				operation: ['create'],
+			},
+		},
+		routing: {
+			send: {
+				type: 'body',
+				property: 'data.values.email_addresses[0].email_address',
+			},
+		},
+	},
+];
 
 export const personFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
@@ -101,4 +120,4 @@ export const personFields: INodeProperties[] = [
 	/*                                contact:create                              */
 	/* -------------------------------------------------------------------------- */
 	...createOperations,
-]
+];

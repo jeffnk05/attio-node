@@ -11,13 +11,13 @@ export class Attio implements INodeType {
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
 		description: 'Interact with Attio API',
 		defaults: {
-			names: 'Attio'
+			names: 'Attio',
 		},
 		inputs: ['main'],
 		outputs: ['main'],
 		credentials: [
 			{
-				name:  'attioApi',
+				name: 'attioApi',
 				required: true,
 			},
 		],
@@ -41,11 +41,10 @@ export class Attio implements INodeType {
 						value: 'person',
 					},
 				],
-				default: 'person'
+				default: 'person',
 			},
 			...personOperations,
 			...personFields,
 		],
-
 	};
 }
