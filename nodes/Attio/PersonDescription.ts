@@ -41,6 +41,11 @@ export const personOperations: INodeProperties[] = [
 					},
 				},
 			},
+			{
+				name: 'Delete',
+				value: 'delete',
+				action: 'Delete a person record'
+			},
 		],
 		default: 'get',
 	},
@@ -130,6 +135,37 @@ const updateOperations: INodeProperties[] = [
 	},
 ];
 
+const deleteOperations: INodeProperties[] = [
+	{
+		displayName: 'Record ID',
+		name: 'recordID',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: ['person'],
+				operation: ['delete'],
+			},
+		},
+		routing: {
+			request: {
+				method: 'DELETE',
+				url: '=/v2/objects/people/records/{{encodeURIComponent($value)}}',
+			},
+			output: {
+				postReceive: [
+					{
+						type: 'set',
+						properties: {
+							value: '={{ { "success": true } }}', // Also possible to use the original response data
+						},
+					},
+				],
+			}
+		},
+		default: ''
+	}
+]
+
 export const personFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
 	/*                                people:get                              		*/
@@ -143,4 +179,8 @@ export const personFields: INodeProperties[] = [
 	/*                                people:update                              	*/
 	/* -------------------------------------------------------------------------- */
 	...updateOperations,
+	/* -------------------------------------------------------------------------- */
+	/*                                people:delete                              	*/
+	/* -------------------------------------------------------------------------- */
+	...deleteOperations,
 ];
