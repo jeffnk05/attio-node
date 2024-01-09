@@ -17,6 +17,17 @@ export const companyOperations: INodeProperties[] = [
 				name: 'Get',
 				value: 'get',
 				action: 'Get a company record'
+			},
+			{
+				name: 'Create',
+				value: 'create',
+				action: 'Create a company record',
+				routing: {
+					request: {
+						method: 'POST',
+						url: '=/v2/objects/companies/records',
+					}
+				}
 			}
 		],
 		default: 'get'
@@ -46,6 +57,45 @@ const getOperations: INodeProperties[] = [
 	},
 ];
 
+const createOperations: INodeProperties[] = [
+	{
+		displayName: 'Name',
+		name: 'name',
+		type: 'string',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['company'],
+				operation: ['create']
+			},
+		},
+		routing: {
+			send: {
+				type: 'body',
+				property: 'data.values.name[0].value',
+			}
+		}
+	},
+	{
+		displayName: 'Domain',
+		name: 'domain',
+		type: 'string',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['company'],
+				operation: ['create']
+			},
+		},
+		routing: {
+			send: {
+				type: 'body',
+				property: 'data.values.domains[0].domain',
+			}
+		}
+	}
+]
+
 export const companyFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
 	/*                                company:get                              		*/
@@ -54,7 +104,7 @@ export const companyFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
 	/*                                company:create                              */
 	/* -------------------------------------------------------------------------- */
-	//...createOperations,
+	...createOperations,
 	/* -------------------------------------------------------------------------- */
 	/*                               company:update                              	*/
 	/* -------------------------------------------------------------------------- */
