@@ -39,6 +39,11 @@ export const companyOperations: INodeProperties[] = [
 						url: '=/v2/objects/companies/records'
 					},
 				}
+			},
+			{
+				name: 'Delete',
+				value: 'delete',
+				action: 'Delete a company record',
 			}
 		],
 		default: 'get'
