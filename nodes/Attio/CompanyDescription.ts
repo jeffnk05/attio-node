@@ -28,6 +28,17 @@ export const companyOperations: INodeProperties[] = [
 						url: '=/v2/objects/companies/records',
 					}
 				}
+			},
+			{
+				name: 'Update',
+				value: 'update',
+				action: 'Update a comapny record',
+				routing: {
+					request: {
+						method: 'PATCH',
+						url: '=/v2/objects/companies/records'
+					},
+				}
 			}
 		],
 		default: 'get'
@@ -94,6 +105,65 @@ const createOperations: INodeProperties[] = [
 			}
 		}
 	}
+];
+
+const updateOperations: INodeProperties[] = [
+	{
+		displayName: 'Record ID',
+		name: 'recordID',
+		type: 'string',
+		description: 'Input the record ID',
+		displayOptions: {
+			show: {
+				resource: ['company'],
+				operation: ['update'],
+			},
+		},
+		routing: {
+			request: {
+				method: 'PATCH',
+				url: '=/v2/objects/companies/records/{{encodeURIComponent($value)}}',
+			},
+		},
+		required: true,
+		default: '',
+	},
+	{
+		displayName: 'Name',
+		name: 'name',
+		type: 'string',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['company'],
+				operation: ['update']
+			},
+		},
+		routing: {
+			send: {
+				type: 'body',
+				property: 'data.values.name[0].value',
+			}
+		}
+	},
+	{
+		displayName: 'Domain',
+		name: 'domain',
+		type: 'string',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['company'],
+				operation: ['update']
+			},
+		},
+		routing: {
+			send: {
+				type: 'body',
+				property: 'data.values.domains[0].domain',
+			}
+		}
+	}
 ]
 
 export const companyFields: INodeProperties[] = [
@@ -108,7 +178,7 @@ export const companyFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
 	/*                               company:update                              	*/
 	/* -------------------------------------------------------------------------- */
-	//...updateOperations,
+	...updateOperations,
 	/* -------------------------------------------------------------------------- */
 	/*                               company:delete                              	*/
 	/* -------------------------------------------------------------------------- */
