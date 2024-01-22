@@ -171,6 +171,38 @@ const updateOperations: INodeProperties[] = [
 	}
 ]
 
+const deleteOperations: INodeProperties[] = [
+	{
+		displayName: 'Record ID',
+		name: 'recordID',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: ['company'],
+				operation: ['delete'],
+			},
+		},
+		routing: {
+			request: {
+				method: 'DELETE',
+				url: '=/v2/objects/companies/records/{{encodeURIComponent($value)}}',
+			},
+			output: {
+				postReceive: [
+					{
+						type: 'set',
+						properties: {
+							value: '={{ { "success": true } }}', // Also possible to use the original response data
+						},
+					},
+				],
+			}
+		},
+		// add required
+		default: ''
+	}
+]
+
 export const companyFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
 	/*                                company:get                              		*/
@@ -187,5 +219,5 @@ export const companyFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
 	/*                               company:delete                              	*/
 	/* -------------------------------------------------------------------------- */
-	//...deleteOperations,
+	...deleteOperations,
 ];
