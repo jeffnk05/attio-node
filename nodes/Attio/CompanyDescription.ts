@@ -134,40 +134,55 @@ const updateOperations: INodeProperties[] = [
 		default: '',
 	},
 	{
-		displayName: 'Name',
-		name: 'name',
-		type: 'string',
-		default: '',
+		displayName: 'Company Properties',
+		name: 'additionalFields',
+		type: 'collection',
+		default: {},
+		placeholder: 'Add property',
 		displayOptions: {
 			show: {
 				resource: ['company'],
 				operation: ['update']
-			},
-		},
-		routing: {
-			send: {
-				type: 'body',
-				property: 'data.values.name[0].value',
 			}
-		}
-	},
-	{
-		displayName: 'Domain',
-		name: 'domain',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['company'],
-				operation: ['update']
-			},
 		},
-		routing: {
-			send: {
-				type: 'body',
-				property: 'data.values.domains[0].domain',
-			}
-		}
+		options: [
+			{
+				displayName: 'Name',
+				name: 'name',
+				type: 'string',
+				default: '',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'data.values.name[0].value',
+					}
+				}
+			},
+			{
+				displayName: 'Domain',
+				name: 'domain',
+				type: 'string',
+				default: '',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'data.values.domains[0].domain',
+					}
+				}
+			},
+			{
+				displayName: 'Description',
+				name: 'description',
+				type: 'string',
+				default: '',
+				routing: {
+					send: {
+						type: 'body',
+						property: 'data.values.description[0].value',
+					}
+				}
+			},
+		],
 	}
 ]
 
